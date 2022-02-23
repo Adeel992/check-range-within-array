@@ -1,0 +1,31 @@
+function handicap_index_diff(arr, h_index) {
+
+    let diff_val = h_index;
+    const res = [];
+    for (var i = 0; i < arr.length; i++) {
+        var goal = arr[i];
+        var counts = arr;
+        var counter = 0;
+
+        for (var j = 0; j < counts.length; j++) {
+            if (goal - diff_val == counts[j] || goal + diff_val == counts[j]) {
+                res.push(goal);
+                res.push(counts[j]);
+            }
+            else if (goal - counts[j] < diff_val && goal - counts[j] > 0) {
+                res.push(goal);
+                res.push(counts[j]);
+            }
+            else if (goal == counts[j]) {
+                counter++;
+                if(counter > 1){
+                    res.push(goal);
+                    res.push(counts[j]);
+                }
+            
+            }
+        }
+
+    }
+    return res;
+}
